@@ -1,0 +1,13 @@
+cookie:
+  expiry_days: 10
+  key: some_signature_keys
+  name: some_cookie_name
+credentials:
+  usernames:
+    Masayuki:
+      email: mybirthdayis619@gmail.com
+      name: Masayuki
+      password: $2b$12$hVOovD8w7MQIThZieox.K.J843E.EfNEX9Pdv/wn/KIy7YThgMhpi
+preauthorized:
+  emails:
+  - melsby@gmail.com
