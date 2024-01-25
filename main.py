@@ -20,7 +20,7 @@ authenticator = stauth.Authenticate(
 	config['preauthorized'],
 )
 
-name, authentication_status, username = authenticator.login('main',10,{'Form name':'ログイン', 'Username':'ユーザー名', 'Password':'パスワード', 'Login':'ログイン'})
+name, authentication_status, username = authenticator.login('main',{'Form name':'ログイン', 'Username':'ユーザー名', 'Password':'パスワード', 'Login':'ログイン'})
 
 
 
