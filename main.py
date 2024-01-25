@@ -5,9 +5,9 @@ import streamlit_authenticator as stauth
 import yaml
 
 # ファイル設置場所 Local環境
-Config_File = '../D160_Login/config.yaml'
+# Config_File = '../D160_Login/config.yaml'
 # ファイル設置場所 本番環境
-# Config_File = './_00_D161_config.yaml'
+Config_File = './config.yaml'
 
 with open(Config_File) as file:
 	config = yaml.load(file, Loader=yaml.SafeLoader)
