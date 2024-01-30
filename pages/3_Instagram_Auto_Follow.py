@@ -18,14 +18,14 @@ Instagram_Id = st.text_input('Instagram ID', placeholder='Instagram ID', max_cha
 
 Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram Password', max_chars=20)
 
-Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=20, help='例 hina_k_1019')
+Follower_List_Id =  st.text_input('Follower List Id', placeholder='Follower List Id', max_chars=20, help='例 hina_k_1019')
 
 Loop_Count = st.number_input('フォローする件数',0,200,0,step=5)
 
 Time_S = st.number_input('フォローする時間間隔(秒)',0,600,0,step=5)
 
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
-press_button = st.button("スクレイピング開始")
+press_button = st.button("自動フォロー開始")
 
 
 
