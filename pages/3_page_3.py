@@ -95,7 +95,7 @@ if press_button:
 	#	if i.text == 'Log In' or i.text == 'Log in':
 	#		i.click()
 	#		break
-	loginForm.send_keys(Keys.ENTER).perform()
+	loginForm.find_element(By.NAME,"password").send_keys(Keys.ENTER)
 
 	time.sleep(Wait_Time)
 	# スクリーンショットを取得
