@@ -82,7 +82,7 @@ if press_button:
 	# **********************************************************************
 	# プログレスバー
 	# **********************************************************************
-	progress_text = "処理中です."
+	progress_text = "処理開始しました."
 	percent_complete = 0
 	my_bar = st.progress(percent_complete, text=progress_text)
 	
@@ -115,17 +115,16 @@ if press_button:
 				i.click()
 				break
 
-		time.sleep(Wait_Time)
-
-
 		# **********************************************************************
 		# プログレスバー
 		# **********************************************************************
-		percent_complete = 10
-		my_bar.progress(percent_complete)
+		progress_text = "ログインに成功しました."
+		percent_complete = 2
+		my_bar.progress(percent_complete, text=progress_text)
 
-		# 停止
+
 		time.sleep(Wait_Time)
+
 
 		# **********************************************************************
 		# フォロワー一覧を取得
@@ -133,23 +132,32 @@ if press_button:
 		# パラメータでセットシタフォロワー一覧画面を表示
 		driver.get(Follower_List_Url)
 
+		# **********************************************************************
+		# プログレスバー
+		# **********************************************************************
+		progress_text = "フォロワー一覧画面に遷移しました."
+		percent_complete = 3
+		my_bar.progress(percent_complete, text=progress_text)
+
+
+		# 停止
+		time.sleep(Wait_Time)
+
 		# スクリーンショットを取得
-		Pict_Name= 'screenshot_error.png'
+		Pict_Name= 'screenshot.png'
 		driver.save_screenshot(Pict_Name)
 
 		# 保存した画像をstreamlitアプリ上に表示
 		st.image(Pict_Name)
 
-		# 停止
-		time.sleep(Wait_Time)
 
 		for j in range(1,Loop_Count):
 			# **********************************************************************
 			# プログレスバー
 			# **********************************************************************
-			
+			progress_text = "フォロー処理を行っています."
 			percent_complete = ( j / Loop_Count ) 
-			my_bar.progress(percent_complete)
+			my_bar.progress(percent_complete, text=progress_text)
 
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
