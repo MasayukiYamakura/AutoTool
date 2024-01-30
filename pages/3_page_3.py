@@ -157,8 +157,9 @@ if press_button:
 		percent_complete = 10 
 		my_bar.progress(percent_complete, text=progress_text)
 
-
+		st.write("ループ処理開始直前")
 		for j in range(1,Loop_Count):
+			st.write("ループ処理開始")
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
 			st.write("写真撮影前")
@@ -197,7 +198,7 @@ if press_button:
 
 		# 処理終了メッセージ
 		st.write("処理が途中で完了しました。")
-		my_bar.empty()
+		# my_bar.empty()
 
 		# webページを閉じる
 		driver.close()
