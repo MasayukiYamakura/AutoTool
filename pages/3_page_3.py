@@ -18,7 +18,7 @@ Instagram_Id = st.text_input('Instagram ID', placeholder='Instagram ID', max_cha
 
 Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram Password', max_chars=50)
 
-Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=50, help='例:hina_k_1019')
+Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=50, help='例 hina_k_1019')
 
 Loop_Counts = st.slider('フォローする件数', 0, 200, 25)
 
@@ -132,6 +132,13 @@ if press_button:
 		# **********************************************************************
 		# パラメータでセットシタフォロワー一覧画面を表示
 		driver.get(Follower_List_Url)
+
+		# スクリーンショットを取得
+		Pict_Name= 'screenshot_error.png'
+		driver.save_screenshot(Pict_Name)
+
+		# 保存した画像をstreamlitアプリ上に表示
+		st.image(Pict_Name)
 
 		# 停止
 		time.sleep(Wait_Time)
