@@ -98,7 +98,7 @@ if press_button:
 	# プログレスバー
 	# **********************************************************************
 	percent_complete = 10
-	my_bar = st.progress(percent_complete)
+	my_bar.progress(percent_complete)
 
 	# 停止
 	time.sleep(Wait_Time)
@@ -118,7 +118,7 @@ if press_button:
 			# プログレスバー
 			# **********************************************************************
 			
-			percent_complete = ( j / Loop_Count *100 ) 
+			percent_complete = ( j / Loop_Count ) 
 			# my_bar = st.progress(percent_complete, text=progress_text)
 			my_bar.progress(percent_complete)
 			st.write(j)
