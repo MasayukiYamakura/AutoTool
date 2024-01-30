@@ -69,7 +69,7 @@ if press_button:
 	# Follower_List_Url='https://www.instagram.com/hina_k_1019/followers/?hl=ja'
 	# Loop_Count=4
 
-	Follower_List_Url= 'https://www.instagram.com/' + Follower_List_Id + '/?hl=ja'
+	Follower_List_Url= 'https://www.instagram.com/' + Follower_List_Id + '/followers/?hl=ja'
 	Url='https://www.instagram.com/accounts/login/'
 
 	# Time_S=590
