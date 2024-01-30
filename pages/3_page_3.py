@@ -63,7 +63,7 @@ if press_button:
 	Time_S=3
 	Time_E=10
 	Wait_Time=5
-	Loop_count=4
+	Loop_Count=4
 
 
 	# **********************************************************************
@@ -104,7 +104,7 @@ if press_button:
 		# 停止
 		time.sleep(Wait_Time)
 
-	    for j in range(1,Loop_count):
+	    for j in range(1,Loop_Count):
 			print(j)
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
