@@ -14,8 +14,18 @@ from selenium.webdriver.common.by import By
 # タイトルを設定
 st.title("Instagramフォローアプリ")
 
+Instagram_Id = st.text_input('Instagram ID', placeholder='Instagram ID', max_chars=50, help='電話番号かメールアドレスかID')
+
+Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram Password', max_chars=50)
+
+Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=50, help='例:hina_k_1019')
+
+Loop_Counts = st.slider('フォローする件数', 0, 200, 25)
+
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
 press_button = st.button("スクレイピング開始")
+
+
 
 if press_button:
 
@@ -54,14 +64,20 @@ if press_button:
 	# **********************************************************************
 	# Instagram パラメータ
 	# **********************************************************************
-	Instagram_Id='feelworld999'
-	Instagram_Password='19920619'
+	# Instagram_Id='feelworld999'
+	# Instagram_Password='19920619'
+	# Follower_List_Url='https://www.instagram.com/hina_k_1019/followers/?hl=ja'
+	# Loop_Count=4
+
+	Follower_List_Url= 'https://www.instagram.com/' + Follower_List_Id + '/?hl=ja'
 	Url='https://www.instagram.com/accounts/login/'
-	Follower_List_Url='https://www.instagram.com/hina_k_1019/followers/?hl=ja'
-	Time_S=3
-	Time_E=10
+
+	# Time_S=590
+	# Time_E=600
+	Time_S=5
+	Time_E=6
+	
 	Wait_Time=5
-	Loop_Count=4
 
 	# **********************************************************************
 	# プログレスバー
@@ -88,6 +104,7 @@ if press_button:
 	# パスワード
 	loginForm.find_element(By.NAME,"password").send_keys(Instagram_Password)
 	
+	# 一時停止
 	time.sleep(Wait_Time)
 
 	# Instagram Loginボタンクリック
@@ -130,7 +147,6 @@ if press_button:
 			# **********************************************************************
 			
 			percent_complete = ( j / Loop_Count ) 
-			# my_bar = st.progress(percent_complete, text=progress_text)
 			my_bar.progress(percent_complete)
 
 			# ランダム整数を生成し、待機時間とする
@@ -150,8 +166,8 @@ if press_button:
 				print(Follow_Xpath)
 				button=driver.find_element(By.XPATH, Follow_Xpath)
 
-				# フォロー済みかどうかで分岐
-				if  button.text  ==  'フォローする':
+				# フォロー済みかどうか,かつ処理回数が偶数かどうかで分岐
+				if  button.text  ==  'フォローする' and k % 2 == 0:
 					button.click()
 					print(button.text)
 					break
@@ -173,3 +189,4 @@ if press_button:
 
 	# スクレピン完了したことをstreamlitアプリ上に表示する
 	st.write("正常終了。" + str(j) + "件をフォローしました。")
+	my_bar.empty()
