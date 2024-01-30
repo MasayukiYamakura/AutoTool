@@ -98,7 +98,7 @@ if press_button:
 	# プログレスバー
 	# **********************************************************************
 	percent_complete = 10
-	my_bar = st.progress(percent_complete, text=progress_text)
+	my_bar = st.progress(percent_complete)
 
 	# 停止
 	time.sleep(Wait_Time)
@@ -117,11 +117,11 @@ if press_button:
 			# **********************************************************************
 			# プログレスバー
 			# **********************************************************************
-			st.write(j)
+			
 			percent_complete = ( j / Loop_Count *100 ) 
 			# my_bar = st.progress(percent_complete, text=progress_text)
 			my_bar.progress(percent_complete)
-			
+			st.write(j)
 			print(j)
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
