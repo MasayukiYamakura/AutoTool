@@ -104,7 +104,7 @@ if press_button:
 		# 停止
 		time.sleep(Wait_Time)
 
-	    for j in range(1,Loop_Count):
+		for j in range(1,Loop_Count):
 			print(j)
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
