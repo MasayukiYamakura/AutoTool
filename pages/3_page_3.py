@@ -87,9 +87,9 @@ if press_button:
 	# Instagram Loginボタンクリック
 	btns = driver.find_elements(By.TAG_NAME,"button")
 	for i in btns:
-	if i.text == 'Log In' or i.text == 'Log in':
-		i.click()
-		break
+		if i.text == 'Log In' or i.text == 'Log in':
+			i.click()
+			break
 
 	# 停止
 	time.sleep(Wait_Time)
