@@ -14,13 +14,13 @@ from selenium.webdriver.common.by import By
 # タイトルを設定
 st.title("Instagramフォローアプリ")
 
-Instagram_Id = st.text_input('Instagram ID', placeholder='Instagram ID', max_chars=50, help='電話番号かメールアドレスかID')
+Instagram_Id = st.text_input('Instagram ID', placeholder='Instagram ID', max_chars=20, help='電話番号かメールアドレスかID')
 
-Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram Password', max_chars=50)
+Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram Password', max_chars=20)
 
-Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=50, help='例 hina_k_1019')
+Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=20, help='例 hina_k_1019')
 
-Loop_Counts = st.slider('フォローする件数', 0, 200, 25)
+Loop_Counts = st.slider('フォローする件数', 0, 50, 25)
 
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
 press_button = st.button("スクレイピング開始")
