@@ -20,7 +20,7 @@ Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram 
 
 Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=20, help='例 hina_k_1019')
 
-Loop_Count = st.number_input('フォローする件数',0,200,100,step=5)
+Loop_Count = st.number_input('フォローする件数',0,200,0,step=5)
 
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
 press_button = st.button("スクレイピング開始")
@@ -46,18 +46,6 @@ if press_button:
 							  options=options,
 							  service=service
 							 )
-
-
-	# # webページ上のタイトル画像を取得
-	# img = driver.find_element(By.TAG_NAME, 'img')
-	# src = img.get_attribute('src')
-
-	# # 取得した画像をカレントディレクトリに保存
-	# with open(f"tmp_img.png", "wb") as f:
-	# 	f.write(img.screenshot_as_png)
-
-	# # 保存した画像をstreamlitアプリ上に表示
-	# st.image("tmp_img.png")
 
 ##################################################################################
 
@@ -119,7 +107,7 @@ if press_button:
 		# プログレスバー
 		# **********************************************************************
 		progress_text = "ログインに成功しました."
-		percent_complete = 2
+		percent_complete = 5
 		my_bar.progress(percent_complete, text=progress_text)
 
 
@@ -136,40 +124,35 @@ if press_button:
 		# プログレスバー
 		# **********************************************************************
 		progress_text = "フォロワー一覧画面に遷移しました."
-		percent_complete = 3
+		percent_complete = 10
 		my_bar.progress(percent_complete, text=progress_text)
 
 
 		# 停止
 		time.sleep(Wait_Time)
 
-		# スクリーンショットを取得
-		Pict_Name= 'screenshot.png'
-		driver.save_screenshot(Pict_Name)
 
-		# 保存した画像をstreamlitアプリ上に表示
-		st.image(Pict_Name)
-
-		# **********************************************************************
-		# プログレスバー
-		# **********************************************************************
-		progress_text = "フォロー処理を行っています."
-		percent_complete = 10 
-		my_bar.progress(percent_complete, text=progress_text)
 
 		st.write("ループ処理開始直前")
 		for j in range(1,Loop_Count):
-			st.write("ループ処理開始")
+			# **********************************************************************
+			# プログレスバー
+			# **********************************************************************
+			progress_text = "フォロー処理を行っています."
+			percent_complete = j / Loop_Count
+			my_bar.progress(percent_complete, text=progress_text)
+
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
-			st.write("写真撮影前")
+			
+			# 1～3回目までは写真を画面に表示する
+			st.write('フォロー処理' + str(j) + '回目')
 			# スクリーンショットを取得
 			Pict_Name= 'screenshot_' + str(j) + '.png'
 			driver.save_screenshot(Pict_Name)
-
 			# 保存した画像をstreamlitアプリ上に表示
 			st.image(Pict_Name)
-			st.write("写真撮影OK")
+
 			k=j
 			while True:
 			# フォローボタンのXpathのセット
@@ -209,6 +192,6 @@ if press_button:
 	# webページを閉じる
 	driver.close()
 
-	# スクレピン完了したことをstreamlitアプリ上に表示する
+	# スクレイピングが完了したことをstreamlitアプリ上に表示する
 	st.write("正常終了。" + str(j) + "件をフォローしました。")
 	my_bar.empty()
