@@ -66,7 +66,8 @@ if press_button:
 	# プログレスバー
 	# **********************************************************************
 	progress_text = "処理中です."
-	my_bar = st.progress(0, text=progress_text)
+	percent_complete = 0
+	my_bar = st.progress(percent_complete, text=progress_text)
 	
 	# **********************************************************************
 	# インスタグラム　ログイン
@@ -97,17 +98,11 @@ if press_button:
 	# プログレスバー
 	# **********************************************************************
 	progress_text = "ログイン処理中です."
-	my_bar = st.progress(20, text=progress_text)
+	percent_complete = 10
+	my_bar = st.progress(percent_complete, text=progress_text)
 
 	# 停止
 	time.sleep(Wait_Time)
-
-
-	# **********************************************************************
-	# プログレスバー
-	# **********************************************************************
-	progress_text = "フォロー処理中です."
-	my_bar = st.progress(40, text=progress_text)
 
 	# **********************************************************************
 	# フォロワー一覧を取得
@@ -120,6 +115,13 @@ if press_button:
 		time.sleep(Wait_Time)
 
 		for j in range(1,Loop_Count):
+			# **********************************************************************
+			# プログレスバー
+			# **********************************************************************
+			progress_text = "フォロー処理中です."
+			percent_complete = ( j / Loop_Count *100 ) + 10
+			my_bar = st.progress(percent_complete, text=progress_text)
+			
 			print(j)
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
@@ -150,7 +152,8 @@ if press_button:
 
 
 	except EWxception:
-		print('処理が途中で完了しました。')
+		st.write("処理が途中で完了しました。")
+		my_bar.empty()
 
 #####################################################################################
 
