@@ -90,50 +90,46 @@ if press_button:
 	# インスタグラム　ログイン
 	# **********************************************************************
 	# Follow_Count=number
-	driver.get(Url)
+	try:
+		driver.get(Url)
 
-	# 停止
-	time.sleep(Wait_Time)
+		# 停止
+		time.sleep(Wait_Time)
 
-	# ログインフォームの要素取得
-	loginForm = driver.find_element(By.ID,"loginForm")
+		# ログインフォームの要素取得
+		loginForm = driver.find_element(By.ID,"loginForm")
 
-	# ユーザー名入力
-	loginForm.find_element(By.NAME,"username").send_keys(Instagram_Id)
+		# ユーザー名入力
+		loginForm.find_element(By.NAME,"username").send_keys(Instagram_Id)
 
-	# パスワード
-	loginForm.find_element(By.NAME,"password").send_keys(Instagram_Password)
-	
-	# 一時停止
-	time.sleep(Wait_Time)
+		# パスワード
+		loginForm.find_element(By.NAME,"password").send_keys(Instagram_Password)
+		
+		# 一時停止
+		time.sleep(Wait_Time)
 
-	# Instagram Loginボタンクリック
-	btns = driver.find_elements(By.TAG_NAME,"button")
-	for i in btns:
-		if i.text == 'Log In' or i.text == 'Log in':
-			i.click()
-			break
+		# Instagram Loginボタンクリック
+		btns = driver.find_elements(By.TAG_NAME,"button")
+		for i in btns:
+			if i.text == 'Log In' or i.text == 'Log in':
+				i.click()
+				break
 
-	time.sleep(Wait_Time)
-	# スクリーンショットを取得
-	Pict_Name= 'screenshot_.png'
-	driver.save_screenshot(Pict_Name)
+		time.sleep(Wait_Time)
 
-	# 保存した画像をstreamlitアプリ上に表示
-	st.image(Pict_Name)
 
-	# **********************************************************************
-	# プログレスバー
-	# **********************************************************************
-	percent_complete = 10
-	my_bar.progress(percent_complete)
+		# **********************************************************************
+		# プログレスバー
+		# **********************************************************************
+		percent_complete = 10
+		my_bar.progress(percent_complete)
 
-	# 停止
-	time.sleep(Wait_Time)
+		# 停止
+		time.sleep(Wait_Time)
 
-	# **********************************************************************
-	# フォロワー一覧を取得
-	# **********************************************************************
+		# **********************************************************************
+		# フォロワー一覧を取得
+		# **********************************************************************
 	try:
 		# パラメータでセットシタフォロワー一覧画面を表示
 		driver.get(Follower_List_Url)
@@ -178,8 +174,19 @@ if press_button:
 
 
 	except EWxception:
+		# スクリーンショットを取得
+		Pict_Name= 'screenshot_error.png'
+		driver.save_screenshot(Pict_Name)
+
+		# 保存した画像をstreamlitアプリ上に表示
+		st.image(Pict_Name)
+
+		# 処理終了メッセージ
 		st.write("処理が途中で完了しました。")
 		my_bar.empty()
+
+		# webページを閉じる
+		driver.close()
 
 #####################################################################################
 
