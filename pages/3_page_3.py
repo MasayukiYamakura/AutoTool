@@ -20,7 +20,7 @@ Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram 
 
 Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List_Id', max_chars=20, help='例 hina_k_1019')
 
-Loop_Counts = st.slider('フォローする件数', 0, 50, 25)
+Loop_Count = st.number_input('フォローする件数',0,200,100,step=5)
 
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
 press_button = st.button("スクレイピング開始")
