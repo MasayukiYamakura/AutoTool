@@ -89,6 +89,14 @@ if press_button:
 	loginForm.find_element(By.NAME,"password").send_keys(Instagram_Password)
 	
 
+	# Instagram Loginボタンクリック
+	# btns = driver.find_elements(By.TAG_NAME,"button")
+	# for i in btns:
+	#	if i.text == 'Log In' or i.text == 'Log in':
+	#		i.click()
+	#		break
+	loginForm.send_keys(Keys.ENTER).perform()
+
 	time.sleep(Wait_Time)
 	# スクリーンショットを取得
 	Pict_Name= 'screenshot_.png'
@@ -96,13 +104,6 @@ if press_button:
 
 	# 保存した画像をstreamlitアプリ上に表示
 	st.image(Pict_Name)
-
-	# Instagram Loginボタンクリック
-	btns = driver.find_elements(By.TAG_NAME,"button")
-	for i in btns:
-		if i.text == 'Log In' or i.text == 'Log in':
-			i.click()
-			break
 
 	# **********************************************************************
 	# プログレスバー
