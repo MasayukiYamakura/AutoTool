@@ -150,15 +150,15 @@ if press_button:
 		# 保存した画像をstreamlitアプリ上に表示
 		st.image(Pict_Name)
 
+		# **********************************************************************
+		# プログレスバー
+		# **********************************************************************
+		progress_text = "フォロー処理を行っています."
+		percent_complete = 10 
+		my_bar.progress(percent_complete, text=progress_text)
+
 
 		for j in range(1,Loop_Count):
-			# **********************************************************************
-			# プログレスバー
-			# **********************************************************************
-			progress_text = "フォロー処理を行っています."
-			percent_complete = ( j / Loop_Count ) 
-			my_bar.progress(percent_complete, text=progress_text)
-
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
 			st.write("写真撮影前")
@@ -187,7 +187,7 @@ if press_button:
 				k = k + 1
 
 
-	except EWxception:
+	except Exception:
 		# スクリーンショットを取得
 		Pict_Name= 'screenshot_error.png'
 		driver.save_screenshot(Pict_Name)
