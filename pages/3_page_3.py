@@ -121,18 +121,17 @@ if press_button:
 			percent_complete = ( j / Loop_Count ) 
 			# my_bar = st.progress(percent_complete, text=progress_text)
 			my_bar.progress(percent_complete)
-			st.write(j)
-			print(j)
+
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
-
+			st.write("写真撮影前")
 			# スクリーンショットを取得
 			Pict_Name= 'screenshot_' + str(j) + '.png'
 			driver.save_screenshot(Pict_Name)
-			
+
 			# 保存した画像をstreamlitアプリ上に表示
 			st.image(Pict_Name)
-
+			st.write("写真撮影OK")
 			k=j
 			while True:
 			# フォローボタンのXpathのセット
