@@ -2,6 +2,7 @@
 
 # 必要なパッケージのインポート
 import streamlit as st
+import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome import service as fs
@@ -16,8 +17,6 @@ st.title("Instagramフォローアプリ")
 press_button = st.button("スクレイピング開始")
 
 if press_button:
-	# スクレイピングするwebサイトのURL
-	URL = "https://ohenziblog.com"
 
 	# ドライバのオプション
 	options = ChromeOptions()
@@ -37,8 +36,6 @@ if press_button:
 							  service=service
 							 )
 
-	# URLで指定したwebページを開く
-	driver.get(URL)
 
 	# # webページ上のタイトル画像を取得
 	# img = driver.find_element(By.TAG_NAME, 'img')
@@ -65,7 +62,12 @@ if press_button:
 	Wait_Time=5
 	Loop_Count=4
 
-
+	# **********************************************************************
+	# プログレスバー
+	# **********************************************************************
+	progress_text = "処理中です."
+	my_bar = st.progress(0, text=progress_text)
+	
 	# **********************************************************************
 	# インスタグラム　ログイン
 	# **********************************************************************
@@ -91,8 +93,21 @@ if press_button:
 			i.click()
 			break
 
+	# **********************************************************************
+	# プログレスバー
+	# **********************************************************************
+	progress_text = "ログイン処理中です."
+	my_bar = st.progress(20, text=progress_text)
+
 	# 停止
 	time.sleep(Wait_Time)
+
+
+	# **********************************************************************
+	# プログレスバー
+	# **********************************************************************
+	progress_text = "フォロー処理中です."
+	my_bar = st.progress(40, text=progress_text)
 
 	# **********************************************************************
 	# フォロワー一覧を取得
