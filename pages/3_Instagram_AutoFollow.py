@@ -12,7 +12,7 @@ from webdriver_manager.core.os_manager import ChromeType
 from selenium.webdriver.common.by import By
 
 # タイトルを設定
-st.title("Instagramフォローアプリ")
+st.title("Instagram Auto Follow")
 
 Instagram_Id = st.text_input('Instagram ID', placeholder='Instagram ID', max_chars=20, help='電話番号かメールアドレスかID')
 
