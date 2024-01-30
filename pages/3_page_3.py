@@ -91,7 +91,7 @@ if press_button:
 
 	time.sleep(Wait_Time)
 	# スクリーンショットを取得
-	Pict_Name= 'screenshot_' + str(j) + '.png'
+	Pict_Name= 'screenshot_.png'
 	driver.save_screenshot(Pict_Name)
 
 	# 保存した画像をstreamlitアプリ上に表示
