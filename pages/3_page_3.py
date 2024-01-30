@@ -3,6 +3,7 @@
 # 必要なパッケージのインポート
 import streamlit as st
 import time
+import random
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome import service as fs
