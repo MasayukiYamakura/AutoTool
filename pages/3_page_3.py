@@ -117,7 +117,7 @@ if press_button:
 			# **********************************************************************
 			# プログレスバー
 			# **********************************************************************
-			percent_complete = ( j / Loop_Count *100 ) + 10
+			percent_complete = ( j / Loop_Count *10 ) 
 			my_bar = st.progress(percent_complete, text=progress_text)
 			
 			print(j)
