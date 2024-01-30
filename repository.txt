@@ -1,3 +1,0 @@
-streamlit
-streamlit-authenticator
-extra_streamlit_components
