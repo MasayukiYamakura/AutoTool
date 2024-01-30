@@ -146,12 +146,13 @@ if press_button:
 			time.sleep(random.randint(Time_S, Time_E))
 			
 			# 1～3回目までは写真を画面に表示する
-			st.write('フォロー処理' + str(j) + '回目')
-			# スクリーンショットを取得
-			Pict_Name= 'screenshot_' + str(j) + '.png'
-			driver.save_screenshot(Pict_Name)
-			# 保存した画像をstreamlitアプリ上に表示
-			st.image(Pict_Name)
+			if  j < 4:
+				st.write('フォロー処理' + str(j) + '回目')
+				# スクリーンショットを取得
+				Pict_Name= 'screenshot_' + str(j) + '.png'
+				driver.save_screenshot(Pict_Name)
+				# 保存した画像をstreamlitアプリ上に表示
+				st.image(Pict_Name)
 
 			k=j
 			while True:
