@@ -97,7 +97,6 @@ if press_button:
 	# **********************************************************************
 	# プログレスバー
 	# **********************************************************************
-	progress_text = "ログイン処理中です."
 	percent_complete = 10
 	my_bar = st.progress(percent_complete, text=progress_text)
 
@@ -118,7 +117,6 @@ if press_button:
 			# **********************************************************************
 			# プログレスバー
 			# **********************************************************************
-			progress_text = "フォロー処理中です."
 			percent_complete = ( j / Loop_Count *100 ) + 10
 			my_bar = st.progress(percent_complete, text=progress_text)
 			
