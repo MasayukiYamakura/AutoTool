@@ -88,14 +88,14 @@ if press_button:
 	# パスワード
 	loginForm.find_element(By.NAME,"password").send_keys(Instagram_Password)
 	
+	time.sleep(Wait_Time)
 
 	# Instagram Loginボタンクリック
-	# btns = driver.find_elements(By.TAG_NAME,"button")
-	# for i in btns:
-	#	if i.text == 'Log In' or i.text == 'Log in':
-	#		i.click()
-	#		break
-	loginForm.find_element(By.NAME,"password").send_keys(Keys.ENTER)
+	btns = driver.find_elements(By.TAG_NAME,"button")
+	for i in btns:
+		if i.text == 'Log In' or i.text == 'Log in':
+			i.click()
+			break
 
 	time.sleep(Wait_Time)
 	# スクリーンショットを取得
