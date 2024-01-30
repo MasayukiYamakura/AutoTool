@@ -98,40 +98,40 @@ if press_button:
 	# フォロワー一覧を取得
 	# **********************************************************************
 	try:
-	# パラメータでセットシタフォロワー一覧画面を表示
-	driver.get(Follower_List_Url)
+		# パラメータでセットシタフォロワー一覧画面を表示
+		driver.get(Follower_List_Url)
 
-	# 停止
-	time.sleep(Wait_Time)
+		# 停止
+		time.sleep(Wait_Time)
 
-    for j in range(1,Loop_count):
-		print(j)
-		# ランダム整数を生成し、待機時間とする
-		time.sleep(random.randint(Time_S, Time_E))
+	    for j in range(1,Loop_count):
+			print(j)
+			# ランダム整数を生成し、待機時間とする
+			time.sleep(random.randint(Time_S, Time_E))
 
-		# スクリーンショットを取得
-		Pict_Name= 'screenshot_' + str(j) + '.png'
-		driver.save_screenshot(Pict_Name)
-		
-		# 保存した画像をstreamlitアプリ上に表示
-		st.image(Pict_Name)
+			# スクリーンショットを取得
+			Pict_Name= 'screenshot_' + str(j) + '.png'
+			driver.save_screenshot(Pict_Name)
+			
+			# 保存した画像をstreamlitアプリ上に表示
+			st.image(Pict_Name)
 
-    	k=j
-		while True:
-		# フォローボタンのXpathのセット
-			Follow_Xpath = '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[' + str(k) + ']/div/div/div/div[3]/div/button'
-			print(Follow_Xpath)
-			button=driver.find_element(By.XPATH, Follow_Xpath)
+			k=j
+			while True:
+			# フォローボタンのXpathのセット
+				Follow_Xpath = '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[' + str(k) + ']/div/div/div/div[3]/div/button'
+				print(Follow_Xpath)
+				button=driver.find_element(By.XPATH, Follow_Xpath)
 
-			# フォロー済みかどうかで分岐
-			if  button.text  ==  'フォローする':
-				button.click()
-				print(button.text)
-				break
-			else:
-				# フォロー済みの場合はカウント上限を加算する
-				print('クリックしない')
-			k = k + 1
+				# フォロー済みかどうかで分岐
+				if  button.text  ==  'フォローする':
+					button.click()
+					print(button.text)
+					break
+				else:
+					# フォロー済みの場合はカウント上限を加算する
+					print('クリックしない')
+				k = k + 1
 
 
 	except EWxception:
