@@ -22,7 +22,7 @@ Follower_List_Id =  st.text_input('Follower_List_Id', placeholder='Follower_List
 
 Loop_Count = st.number_input('フォローする件数',0,200,0,step=5)
 
-Time_S = st.number_input('フォローする時間間隔',0,600,0,step=5)
+Time_S = st.number_input('フォローする時間間隔(秒)',0,600,0,step=5)
 
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
 press_button = st.button("スクレイピング開始")
@@ -54,16 +54,10 @@ if press_button:
 	# **********************************************************************
 	# Instagram パラメータ
 	# **********************************************************************
-	# Instagram_Id='feelworld999'
-	# Instagram_Password='19920619'
-	# Follower_List_Url='https://www.instagram.com/hina_k_1019/followers/?hl=ja'
-	# Loop_Count=4
-
 	Follower_List_Url= 'https://www.instagram.com/' + Follower_List_Id + '/followers/?hl=ja'
 	Url='https://www.instagram.com/accounts/login/'
 
 	Time_E = Time_S + 3
-	
 	Wait_Time=5
 
 	# **********************************************************************
@@ -76,7 +70,6 @@ if press_button:
 	# **********************************************************************
 	# インスタグラム　ログイン
 	# **********************************************************************
-	# Follow_Count=number
 	try:
 		driver.get(Url)
 
@@ -137,11 +130,10 @@ if press_button:
 		percent_complete = 15
 		my_bar.progress(percent_complete, text=progress_text)
 
-
-		st.write("ループ処理開始直前")
+		# **********************************************************************
+		# 繰り返し処理
+		# **********************************************************************
 		for j in range(1,Loop_Count):
-
-
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
 			
@@ -171,7 +163,9 @@ if press_button:
 					print('クリックしない')
 				k = k + 1
 
-
+	# **********************************************************************
+	# 例外処理
+	# **********************************************************************
 	except Exception:
 		# スクリーンショットを取得
 		Pict_Name= 'screenshot_error.png'
@@ -187,15 +181,8 @@ if press_button:
 		# webページを閉じる
 		driver.close()
 
-#####################################################################################
-
-
-	# webページを閉じる
-	driver.close()
-
 	# スクレイピングが完了したことをstreamlitアプリ上に表示する
 	# st.write("正常終了。" + str(j) + "件をフォローしました。")
-
 	# my_bar.empty()
 
 	# **********************************************************************
@@ -204,4 +191,6 @@ if press_button:
 	progress_text = "正常終了。" + str(j) + "件をフォローしました。"
 	percent_complete = 100
 	my_bar.progress(percent_complete, text=progress_text)
-	
+
+	# webページを閉じる
+	driver.close()
