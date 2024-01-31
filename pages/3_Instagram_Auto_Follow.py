@@ -168,27 +168,31 @@ if press_button:
 			
 			k=j
 			while True:
-			# フォローボタンのXpathのセット
-				Follow_Xpath = '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[' + str(k) + ']/div/div/div/div[3]/div/button'
-				print(Follow_Xpath)
-				button=driver.find_element(By.XPATH, Follow_Xpath)
+				try:
+					# フォローボタンのXpathのセット
+					Follow_Xpath = '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[' + str(k) + ']/div/div/div/div[3]/div/button'
+					print(Follow_Xpath)
+					button=driver.find_element(By.XPATH, Follow_Xpath)
 
-				# フォロー済みかどうか,かつ処理回数が偶数かどうかで分岐
-				if  button.text  ==  'フォローする' and k % 2 == 0:
-					button.click()
-					print(button.text)
-					break
-				else:
-					# フォロー済みの場合はカウント上限を加算する
-					print('クリックしない')
-				k = k + 1
+					# フォロー済みかどうか,かつ処理回数が偶数かどうかで分岐
+					if  button.text  ==  'フォローする' and k % 2 == 0:
+						button.click()
+						print(button.text)
+						break
+					else:
+						# フォロー済みの場合はカウント上限を加算する
+						print('クリックしない')
+					k = k + 1
+				except Exception:
+					# 要素までスクロール
+					driver.execute_script("arguments[0].scrollIntoView();", Follow_Xpath)
 
 	# **********************************************************************
 	# 例外処理
 	# **********************************************************************
 	except Exception:
 		# スクリーンショットを取得
-		Pict_Name= 'screenshot_error.png'
+		Pict_Name= 'screenshot.png'
 		driver.save_screenshot(Pict_Name)
 
 		# 保存した画像をstreamlitアプリ上に表示
