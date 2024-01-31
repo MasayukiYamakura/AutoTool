@@ -1,49 +1,56 @@
+# main.py
+
 import streamlit as st
-from streamlit_option_menu import option_menu
+import streamlit_authenticator as stauth
+import yaml
 
-# 1. as sidebar menu
-with st.sidebar:
-    selected = option_menu("Main Menu", ["Home", 'Settings'], 
-        icons=['house', 'gear'], menu_icon="cast", default_index=1)
-    selected
+# ファイル設置場所 Local環境
+# Config_File = '../D160_Login/config.yaml'
+# ファイル設置場所 本番環境
+Config_File = './config.yaml'
 
-# 2. horizontal menu
-selected2 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'], 
-    icons=['house', 'cloud-upload', "list-task", 'gear'], 
-    menu_icon="cast", default_index=0, orientation="horizontal")
-selected2
+with open(Config_File) as file:
+	config = yaml.load(file, Loader=yaml.SafeLoader)
 
-# 3. CSS style definitions
-selected3 = option_menu(None, ["Home", "Upload",  "Tasks", 'Settings'], 
-    icons=['house', 'cloud-upload', "list-task", 'gear'], 
-    menu_icon="cast", default_index=0, orientation="horizontal",
-    styles={
-        "container": {"padding": "0!important", "background-color": "#fafafa"},
-        "icon": {"color": "orange", "font-size": "25px"}, 
-        "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-        "nav-link-selected": {"background-color": "green"},
-    }
+authenticator = stauth.Authenticate(
+	config['credentials'],
+	config['cookie']['name'],
+	config['cookie']['key'],
+	config['cookie']['expiry_days'],
+	config['preauthorized'],
 )
 
-# 4. Manual item selection
-if st.session_state.get('switch_button', False):
-    st.session_state['menu_option'] = (st.session_state.get('menu_option', 0) + 1) % 4
-    manual_select = st.session_state['menu_option']
-else:
-    manual_select = None
-    
-selected4 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'], 
-    icons=['house', 'cloud-upload', "list-task", 'gear'], 
-    orientation="horizontal", manual_select=manual_select, key='menu_4')
-st.button(f"Move to Next {st.session_state.get('menu_option', 1)}", key='switch_button')
-selected4
+name, authentication_status, username = authenticator.login("main" , "Login")
 
-# 5. Add on_change callback
-def on_change(key):
-    selection = st.session_state[key]
-    st.write(f"Selection changed to {selection}")
-    
-selected5 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'],
-                        icons=['house', 'cloud-upload', "list-task", 'gear'],
-                        on_change=on_change, key='menu_5', orientation="horizontal")
-selected5
+
+
+if 'authentication_status' not in st.session_state:
+	st.session_state['authentication_status'] = None
+
+if st.session_state["authentication_status"]:
+	authenticator.logout('Logout', 'main')
+	st.write(f'ログインに成功しました')
+	# ここにログイン後の処理を書く。
+	# add start 
+	st.title("Multipage Sample")
+	st.header('こんにちは 世界')
+
+	st.markdown('''
+	こんにちは！
+
+	これはStreamlitMultiPageAppのテストです。
+	Multipageについては、下記サイトを参照してください。
+
+	- https://docs.streamlit.io/library/get-started/multipage-apps
+	- https://blog.streamlit.io/introducing-multipage-apps/
+	''')
+
+
+	# *** sidebar
+	st.sidebar.title('home')
+	# st.sidebar.image('asset/neko.png', use_column_width=True)
+# add end
+elif st.session_state["authentication_status"] is False:
+	st.error('ユーザ名またはパスワードが間違っています')
+elif st.session_state["authentication_status"] is None:
+	st.warning('ユーザ名やパスワードを入力してください')
