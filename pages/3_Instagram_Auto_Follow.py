@@ -20,9 +20,9 @@ Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram 
 
 Follower_List_Id =  st.text_input('Follower List Id', placeholder='Follower List Id', max_chars=20, help='例 hina_k_1019')
 
-Loop_Count = st.number_input('フォローする件数',0,200,0,step=5)
+Loop_Count = st.number_input('フォローする件数',5,200,0,step=5)
 
-Time_S = st.number_input('フォローする時間間隔(秒)',0,600,0,step=5)
+Time_S = st.number_input('フォローする時間間隔(秒)',5,600,0,step=5)
 
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
 press_button = st.button("自動フォロー開始")
@@ -105,12 +105,23 @@ if press_button:
 
 		time.sleep(Wait_Time)
 
+		# スクリーンショットを取得
+		driver.save_screenshot('screenshot.png')
+		# 保存した画像をstreamlitアプリ上に表示
+		st.image('screenshot.png')
 
 		# **********************************************************************
 		# フォロワー一覧を取得
 		# **********************************************************************
 		# パラメータでセットシタフォロワー一覧画面を表示
 		driver.get(Follower_List_Url)
+
+		time.sleep(Wait_Time)
+
+		# スクリーンショットを取得
+		driver.save_screenshot('screenshot.png')
+		# 保存した画像をstreamlitアプリ上に表示
+		st.image('screenshot.png')
 
 		# **********************************************************************
 		# プログレスバー
@@ -137,15 +148,12 @@ if press_button:
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
 			
-			# 1～3回目までは写真を画面に表示する
-			if  j < 4:
-				st.write('フォロー処理' + str(j) + '回目')
-				# スクリーンショットを取得
-				# Pict_Name= 'screenshot_' + str(j) + '.png'
-				Pict_Name= 'screenshot.png'
-				driver.save_screenshot(Pict_Name)
-				# 保存した画像をstreamlitアプリ上に表示
-				st.image(Pict_Name)
+			
+			# スクリーンショットを取得
+			driver.save_screenshot('screenshot.png')
+			# 保存した画像をstreamlitアプリ上に表示
+			# st.image('screenshot.png')
+			
 			# プログレスバー
 			if  ( j / Loop_Count ) * 100 <= 20:
 				percent_complete = 20
