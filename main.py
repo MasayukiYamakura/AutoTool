@@ -1,56 +1,24 @@
-# main.py
-
+from st_on_hover_tabs import on_hover_tabs
 import streamlit as st
-import streamlit_authenticator as stauth
-import yaml
+st.set_page_config(layout="wide")
 
-# ファイル設置場所 Local環境
-# Config_File = '../D160_Login/config.yaml'
-# ファイル設置場所 本番環境
-Config_File = './config.yaml'
-
-with open(Config_File) as file:
-	config = yaml.load(file, Loader=yaml.SafeLoader)
-
-authenticator = stauth.Authenticate(
-	config['credentials'],
-	config['cookie']['name'],
-	config['cookie']['key'],
-	config['cookie']['expiry_days'],
-	config['preauthorized'],
-)
-
-name, authentication_status, username = authenticator.login("main" , "Login")
+st.header("Custom tab component for on-hover navigation bar")
+st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
 
 
+with st.sidebar:
+    tabs = on_hover_tabs(tabName=['Dashboard', 'Money', 'Economy'], 
+                         iconName=['dashboard', 'money', 'economy'], default_choice=0)
 
-if 'authentication_status' not in st.session_state:
-	st.session_state['authentication_status'] = None
+if tabs =='Dashboard':
+    st.title("Navigation Bar")
+    st.write('Name of option is {}'.format(tabs))
 
-if st.session_state["authentication_status"]:
-	authenticator.logout('Logout', 'main')
-	st.write(f'ログインに成功しました')
-	# ここにログイン後の処理を書く。
-	# add start 
-	st.title("Multipage Sample")
-	st.header('こんにちは 世界')
+elif tabs == 'Money':
+    st.title("Paper")
+    st.write('Name of option is {}'.format(tabs))
 
-	st.markdown('''
-	こんにちは！
-
-	これはStreamlitMultiPageAppのテストです。
-	Multipageについては、下記サイトを参照してください。
-
-	- https://docs.streamlit.io/library/get-started/multipage-apps
-	- https://blog.streamlit.io/introducing-multipage-apps/
-	''')
-
-
-	# *** sidebar
-	st.sidebar.title('home')
-	# st.sidebar.image('asset/neko.png', use_column_width=True)
-# add end
-elif st.session_state["authentication_status"] is False:
-	st.error('ユーザ名またはパスワードが間違っています')
-elif st.session_state["authentication_status"] is None:
-	st.warning('ユーザ名やパスワードを入力してください')
+elif tabs == 'Economy':
+    st.title("Tom")
+    st.write('Name of option is {}'.format(tabs))
+    
