@@ -145,7 +145,26 @@ if press_button:
 				driver.save_screenshot(Pict_Name)
 				# 保存した画像をstreamlitアプリ上に表示
 				st.image(Pict_Name)
-
+			# プログレスバー
+			if  ( j / Loop_Count ) * 100 <= 20:
+				percent_complete = 20
+			elif ( j / Loop_Count ) * 100 <= 30:
+				percent_complete = 30
+			elif ( j / Loop_Count ) * 100 <= 40:
+				percent_complete = 40
+			elif ( j / Loop_Count ) * 100 <= 50:
+				percent_complete = 60
+			elif ( j / Loop_Count ) * 100 <= 70:
+				percent_complete = 70
+			elif ( j / Loop_Count ) * 100 <= 80:
+				percent_complete = 80
+			elif ( j / Loop_Count ) * 100 <= 90:
+				percent_complete = 90
+			else:
+				percent_complete = 98
+			progress_text = str(j) + '/' + str(Loop_Count) + '件のフォローが完了しました.'
+			my_bar.progress(percent_complete, text=progress_text)
+			
 			k=j
 			while True:
 			# フォローボタンのXpathのセット
