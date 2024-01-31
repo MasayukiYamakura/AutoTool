@@ -4,3 +4,4 @@ extra_streamlit_components
 selenium
 webdriver-manager
 streamlit-on-Hover-tabs
+streamlit-option-menu
