@@ -1,5 +1,5 @@
-from st_on_hover_tabs import on_hover_tabs
 import streamlit as st
+from st_on_hover_tabs import on_hover_tabs
 st.set_page_config(layout="wide")
 
 st.header("Custom tab component for on-hover navigation bar")
