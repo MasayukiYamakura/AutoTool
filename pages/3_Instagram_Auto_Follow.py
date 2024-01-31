@@ -141,7 +141,8 @@ if press_button:
 			if  j < 4:
 				st.write('フォロー処理' + str(j) + '回目')
 				# スクリーンショットを取得
-				Pict_Name= 'screenshot_' + str(j) + '.png'
+				# Pict_Name= 'screenshot_' + str(j) + '.png'
+				Pict_Name= 'screenshot.png'
 				driver.save_screenshot(Pict_Name)
 				# 保存した画像をstreamlitアプリ上に表示
 				st.image(Pict_Name)
