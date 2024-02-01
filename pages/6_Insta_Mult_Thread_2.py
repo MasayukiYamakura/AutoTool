@@ -54,7 +54,7 @@ async def main():
     
 
 async def taskcancel():
-    task.cancel()  # タスクをキャンセル
+    task.cancel(my_task())  # タスクをキャンセル
 
 press_button1 = st.button("自動フォロー開始")
 
