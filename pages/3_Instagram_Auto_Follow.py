@@ -128,7 +128,7 @@ if press_button:
 
 		time.sleep(Wait_Time)
 
-		del st.session_state.st.image('screenshot.png')
+		del st.session_state.st.image
 		# スクリーンショットを取得
 		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
