@@ -17,6 +17,7 @@
 #     threadA.join()
 #     st.write('Main End')
 
+import streamlit as st
 import asyncio
 
 async def main():
