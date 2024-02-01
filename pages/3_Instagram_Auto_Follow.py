@@ -116,7 +116,7 @@ if press_button:
 		# スクリーンショットを取得
 		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
-		st.image('screenshot.png')
+		Screen_Img = st.image('screenshot.png')
 
 		# **********************************************************************
 		# フォロワー一覧を取得
@@ -126,10 +126,11 @@ if press_button:
 
 		time.sleep(Wait_Time)
 
+		del Screen_Img 
 		# スクリーンショットを取得
 		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
-		st.image('screenshot.png')
+		Screen_Img = st.image('screenshot.png')
 
 		# **********************************************************************
 		# プログレスバー
@@ -156,11 +157,11 @@ if press_button:
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
 			
-			
+			del Screen_Img 
 			# スクリーンショットを取得
 			driver.save_screenshot('screenshot.png')
 			# 保存した画像をstreamlitアプリ上に表示
-			# st.image('screenshot.png')
+			Screen_Img = st.image('screenshot.png')
 			
 			# プログレスバー
 			if  ( j / Loop_Count ) * 100 <= 20:
