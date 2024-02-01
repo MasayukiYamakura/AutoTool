@@ -13,6 +13,6 @@ press_button = st.button("自動フォロー開始")
 if press_button:
     threadA = threading.Thread(target=process)
     threadA.start()
-    time.sleep(1)
+    time.sleep(5)
     threadA.join()
     st.write('Main End')
