@@ -116,7 +116,9 @@ if press_button:
 		# スクリーンショットを取得
 		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
-		Screen_Img = st.image('screenshot.png')
+		# st.image('screenshot.png')
+
+		st.session_state.st.image('screenshot.png')
 
 		# **********************************************************************
 		# フォロワー一覧を取得
@@ -126,12 +128,14 @@ if press_button:
 
 		time.sleep(Wait_Time)
 
-		del Screen_Img 
+		del st.session_state.st.image('screenshot.png')
 		# スクリーンショットを取得
 		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
-		Screen_Img = st.image('screenshot.png')
+		st.session_state.st.image('screenshot.png')
 
+		driver.close()
+		
 		# **********************************************************************
 		# プログレスバー
 		# **********************************************************************
