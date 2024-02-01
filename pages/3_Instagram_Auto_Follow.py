@@ -20,7 +20,7 @@ Instagram_Password = st.text_input('Instagram Password', placeholder='Instagram 
 
 Follower_List_Id =  st.text_input('Follower List Id', placeholder='Follower List Id', max_chars=20, help='例 hina_k_1019')
 
-Loop_Count = st.number_input('フォローする件数', min_value=5, max_value=200, 0)
+Loop_Count = st.number_input(label='フォローする件数', min_value=5, max_value=200, value=0)
 
 Time_S = st.number_input('フォローする時間間隔(秒)',min_value=5,max_value =999,value=0,step=5)
 
