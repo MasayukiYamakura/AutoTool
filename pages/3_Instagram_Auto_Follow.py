@@ -28,6 +28,14 @@ Time_S = st.number_input('フォローする時間間隔(秒)',0,600,0,step=5)
 press_button = st.button("自動フォロー開始")
 
 
+#要素をクリックする直前の処理を定義
+class CustomListener(AbstractEventListener):
+    def before_click(self, element, driver):
+        # 要素までスクロールさせる
+        driver.execute_script('arguments[0].scrollIntoView({behavior: "smooth", block: "center"});', element)
+
+
+
 
 if press_button:
 
