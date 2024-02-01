@@ -50,7 +50,7 @@ async def my_task():
 async def main():
     task = asyncio.create_task(my_task())  # 非同期タスクを作成
     await asyncio.sleep(3)  # 3秒待機
-    task.cancel()  # タスクをキャンセル
+    # task.cancel()  # タスクをキャンセル
     
 
 async def taskcancel():
