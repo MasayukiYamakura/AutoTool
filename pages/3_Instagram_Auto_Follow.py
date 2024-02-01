@@ -298,7 +298,7 @@ def main():
 		st.markdown(f'worker: {worker.getName()}')
 		placeholder = st.empty()
 		while worker.is_alive():
-			placeholder.markdown(f'counter: {worker.counter}')
+			# placeholder.markdown(f'counter: {worker.counter}')
 			time.sleep(1)
 
 	# 別セッションでの更新に追従するために、定期的にrerunする
