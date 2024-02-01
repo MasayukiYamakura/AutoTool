@@ -29,10 +29,10 @@ press_button = st.button("自動フォロー開始")
 
 
 #要素をクリックする直前の処理を定義
-class CustomListener(AbstractEventListener):
-    def before_click(self, element, driver):
-        # 要素までスクロールさせる
-        driver.execute_script('arguments[0].scrollIntoView({behavior: "smooth", block: "center"});', element)
+# class CustomListener(AbstractEventListener):
+#     def before_click(self, element, driver):
+#         # 要素までスクロールさせる
+#         driver.execute_script('arguments[0].scrollIntoView({behavior: "smooth", block: "center"});', element)
 
 
 
@@ -187,13 +187,15 @@ if press_button:
 				try:
 					# フォローボタンのXpathのセット
 					Follow_Xpath = '/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div[1]/div/div[' + str(k) + ']/div/div/div/div[3]/div/button'
-					print(Follow_Xpath)
+
 					button=driver.find_element(By.XPATH, Follow_Xpath)
+
+					# 要素までスクロール
+					driver.execute_script("arguments[0].scrollIntoView();", button)
 
 					# フォロー済みかどうか,かつ処理回数が偶数かどうかで分岐
 					if  button.text  ==  'フォローする' and k % 2 == 0:
 						button.click()
-						print(button.text)
 						break
 					else:
 						# フォロー済みの場合はカウント上限を加算する
