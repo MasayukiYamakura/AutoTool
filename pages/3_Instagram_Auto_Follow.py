@@ -116,9 +116,7 @@ if press_button:
 		# スクリーンショットを取得
 		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
-		# st.image('screenshot.png')
-
-		st.session_state.st.image('screenshot.png')
+		st.image('screenshot.png')
 
 		# **********************************************************************
 		# フォロワー一覧を取得
@@ -128,14 +126,11 @@ if press_button:
 
 		time.sleep(Wait_Time)
 
-		del st.session_state.st.image
 		# スクリーンショットを取得
 		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
-		st.session_state.st.image('screenshot.png')
+		st.image('screenshot.png')
 
-		driver.close()
-		
 		# **********************************************************************
 		# プログレスバー
 		# **********************************************************************
@@ -161,11 +156,10 @@ if press_button:
 			# ランダム整数を生成し、待機時間とする
 			time.sleep(random.randint(Time_S, Time_E))
 			
-			del Screen_Img 
 			# スクリーンショットを取得
 			driver.save_screenshot('screenshot.png')
 			# 保存した画像をstreamlitアプリ上に表示
-			Screen_Img = st.image('screenshot.png')
+			st.image('screenshot.png')
 			
 			# プログレスバー
 			if  ( j / Loop_Count ) * 100 <= 20:
@@ -215,11 +209,9 @@ if press_button:
 	# **********************************************************************
 	except Exception:
 		# スクリーンショットを取得
-		Pict_Name= 'screenshot.png'
-		driver.save_screenshot(Pict_Name)
-
+		driver.save_screenshot('screenshot.png')
 		# 保存した画像をstreamlitアプリ上に表示
-		st.image(Pict_Name)
+		st.image('screenshot.png')
 
 		# 処理終了メッセージ
 		st.write("処理が途中で完了しました。")
