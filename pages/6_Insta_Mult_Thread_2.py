@@ -17,15 +17,49 @@
 #     threadA.join()
 #     st.write('Main End')
 
+# import streamlit as st
+# import asyncio
+
+# async def main():
+#     for j in range(1,10):
+#         st.write('Hello ...' + str(j))
+#         await asyncio.sleep(3)
+#         st.write('... World!')
+#         await asyncio.sleep(1)
+
+# press_button = st.button("自動フォロー開始")
+
+# press_button2 = st.button("自動フォロー終了")
+
+# if press_button:
+#     asyncio.run(main())
+
 import streamlit as st
 import asyncio
 
+async def my_task():
+    # 非同期タスクの実装
+    for j in range(1,10):
+        try:
+            while True:
+                await asyncio.sleep(1)
+                st.write("タスク実行中")
+        except asyncio.CancelledError:
+            st.write("タスクがキャンセルされました")
+
 async def main():
-    st.write('Hello ...')
-    await asyncio.sleep(1)
-    st.write('... World!')
+    task = asyncio.create_task(my_task())  # 非同期タスクを作成
+    await asyncio.sleep(30)  # 3秒待機
 
-press_button = st.button("自動フォロー開始")
+async def cancel():
+    task.cancel()  # タスクをキャンセル
 
-if press_button:
+press_button1 = st.button("自動フォロー開始")
+
+press_button2 = st.button("自動フォロー終了")
+
+if press_button1:
     asyncio.run(main())
+
+if press_button2:
+    asyncio.run(cancel())
