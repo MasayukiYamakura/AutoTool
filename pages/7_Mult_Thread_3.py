@@ -1,23 +1,20 @@
+import streamlit as st
 import threading
 import time
-import streamlit as st
+import sys
  
-def run(stop):
+def func():
     while True:
-        st.write('thread running')
-        if stop():
-                break
-                 
-def main():
-        stop_threads = False
-        t1 = threading.Thread(target = run, args =(lambda : stop_threads, ))
-        t1.start()
-        time.sleep(5)
-        stop_threads = True
-        t1.join()
-        st.write('thread killed')
+        time.sleep(0.5)
+        print("Thread alive, and it won't die on program termination")
+
 
 press_button1 = st.button("自動フォロー開始")
 
+
 if press_button1:
-    main()
+    t1 = threading.Thread(target=func)
+    t1.start()
+    time.sleep(2)
+    sys.exit()
+
