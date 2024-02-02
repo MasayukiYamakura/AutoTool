@@ -12,7 +12,7 @@ def main():
         stop_threads = False
         t1 = threading.Thread(target = run, args =(lambda : stop_threads, ))
         t1.start()
-        time.sleep(1)
+        time.sleep(5)
         stop_threads = True
         t1.join()
         st.write('thread killed')
