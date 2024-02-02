@@ -2,6 +2,7 @@ import sys
 import time
 import threading
 import trace
+import streamlit as st
 
 
 class KThread(threading.Thread):
