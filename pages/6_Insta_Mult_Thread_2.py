@@ -50,18 +50,18 @@ async def my_task():
 async def main():
     task = asyncio.create_task(my_task())  # 非同期タスクを作成
     await asyncio.sleep(3)  # 3秒待機
+    return task
     # task.cancel()  # タスクをキャンセル
     
 
-async def taskcancel():
-    task.cancel(my_task())  # タスクをキャンセル
-
-press_button1 = st.button("自動フォロー開始")
+async def taskcancel(task_p):
+    task_p.cancel(my_task())  # タスクをキャンセル
+ press_button1 = st.button("自動フォロー開始")
 
 press_button2 = st.button("自動フォロー終了")
 
 if press_button1:
-    asyncio.run(main())
+    task_p=asyncio.run(main())
 
 if press_button2:
-    asyncio.run(taskcancel())
+    asyncio.run(taskcancel(task_p))
