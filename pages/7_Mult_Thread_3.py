@@ -9,7 +9,7 @@ def func():
         st.write("Thread alive, and it won't die on program termination")
 
 
-press_button1 = st.button("自動フォロー開始")
+press_button1 = st.button("自動そうじゅう開始")
 
 
 if press_button1:
