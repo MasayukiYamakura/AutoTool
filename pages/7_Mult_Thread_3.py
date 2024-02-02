@@ -6,7 +6,7 @@ import sys
 def func():
     while True:
         time.sleep(0.5)
-        print("Thread alive, and it won't die on program termination")
+        st.write("Thread alive, and it won't die on program termination")
 
 
 press_button1 = st.button("自動フォロー開始")
