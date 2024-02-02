@@ -36,26 +36,45 @@
 
 import streamlit as st
 import asyncio
+import os
+path = 'foo.txt'
 
+
+# async def my_task():
+#     # 非同期タスクの実装
+#     for j in range(1,10):
+#         try:
+#             while True:
+#                 await asyncio.sleep(1)
+#                 st.write("タスク実行中")
+#         except asyncio.CancelledError:
+#             st.write("タスクがキャンセルされました")
 async def my_task():
+    # ファイル作成処理
+    f = open(path, 'w')
+    f.write('')  
+    f.close()
+    is_file = os.path.isfile(path)
     # 非同期タスクの実装
     for j in range(1,10):
-        try:
-            while True:
-                await asyncio.sleep(1)
-                st.write("タスク実行中")
-        except asyncio.CancelledError:
+        if is_file:
+            await asyncio.sleep(1)
+            st.write("タスク実行中")
+        else:
             st.write("タスクがキャンセルされました")
+            break
+
+
+
 
 async def main():
     task = asyncio.create_task(my_task())  # 非同期タスクを作成
     await asyncio.sleep(3)  # 3秒待機
-    return task
     # task.cancel()  # タスクをキャンセル
     
 
 async def taskcancel(task_p):
-    task.cancel(task_p)  # タスクをキャンセル
+    os.remove(path)
 
 press_button1 = st.button("自動フォロー開始")
 
@@ -65,4 +84,4 @@ if press_button1:
     task_p=asyncio.run(main())
 
 if press_button2:
-    asyncio.run(taskcancel(task_p))
+    asyncio.run(taskcancel()
