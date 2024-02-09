@@ -25,6 +25,9 @@ if press_button:
     # インスタンスを生成
     ua = UserAgent(PLATFORM)
 
+    # ドライバのオプション
+	options = ChromeOptions()
+
     # option設定を追加（設定する理由はメモリの削減）
     options.add_argument("--headless")
     options.add_argument('--disable-gpu')
@@ -32,7 +35,6 @@ if press_button:
     options.add_argument('--disable-dev-shm-usage')
 
     # オプションを設定
-    options = ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--user-agent=' + ua.set())
 
