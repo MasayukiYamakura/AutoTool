@@ -28,10 +28,16 @@ Time_S = st.number_input('フォローする時間間隔(秒)',0,600,0,step=5)
 press_button = st.button("自動フォロー開始")
 
 
+
 if press_button:
 
-	# ドライバのオプション
-	options = ChromeOptions()
+	# モバイルエミュレーション
+	mobile_emulation = { "deviceName": "iPhone XR" }
+
+	# エミュレーション情報設定
+	options = webdriver.ChromeOptions()
+	options.add_experimental_option("mobileEmulation", mobile_emulation)
+
 
 	# option設定を追加（設定する理由はメモリの削減）
 	options.add_argument("--headless")
@@ -51,10 +57,10 @@ if press_button:
 ##################################################################################
 
 	# **********************************************************************
-	# Instagram パラメータ
+	# 東カレデートログイン情報
 	# **********************************************************************
 	Follower_List_Url= 'https://www.instagram.com/' + Follower_List_Id + '/followers/?hl=ja'
-	Url='https://www.instagram.com/accounts/login/'
+	Url='https://tokyo-calendar-date.jp/login'
 
 	Time_E = Time_S + 3
 	Wait_Time=5

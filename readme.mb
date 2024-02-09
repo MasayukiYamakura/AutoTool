@@ -1,0 +1,9 @@
+git add .  # これで全ファイル対象に更新したい場合に使う。「.」が大事
+
+git commit -m "20180617" # ""の中は任意の言葉で。僕は更新日を書いてます
+
+git remote add origin https://github.com/----.git # ここはリモートリポジトリのURLを入力
+
+git push origin master #プッシュ完了
+
+c.f.https://qiita.com/kazuki0714/items/fb3457fe5a25ff42f0d4
