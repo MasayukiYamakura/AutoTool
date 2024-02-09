@@ -1,7 +1,14 @@
-from selenium.webdriver import ChromeOptions, Chrome
-from useragent_changer import UserAgent
 from time import sleep
 import streamlit as st
+from selenium import webdriver
+# from selenium.webdriver import ChromeOptions, Chrome
+from useragent_changer import UserAgent
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome import service as fs
+from selenium.webdriver import ChromeOptions
+from webdriver_manager.core.os_manager import ChromeType
+from selenium.webdriver.common.by import By
+
 
 # ボタンを作成(このボタンをアプリ上で押すと"if press_button:"より下の部分が実行される)
 press_button = st.button("自動フォロー開始")
