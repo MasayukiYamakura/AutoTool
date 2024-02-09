@@ -2,7 +2,7 @@ git add .  # これで全ファイル対象に更新したい場合に使う。�
 
 git commit -m "20180617" # ""の中は任意の言葉で。僕は更新日を書いてます
 
-git remote add origin https://github.com/----.git # ここはリモートリポジトリのURLを入力
+git remote add origin https://github.com/----.git # ここはリモートリポジトリのURLを入力(しなくていい)
 
 git push origin master #プッシュ完了
 
