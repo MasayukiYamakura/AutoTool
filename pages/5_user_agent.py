@@ -50,8 +50,8 @@ if press_button:
 	# chromedriverを使用しブラウザを起動
 	driver.get(URL)
 
-    # ウィンドウ最大化
-    driver.maximize_window()
+	# ウィンドウ最大化
+	driver.maximize_window()
 
 
 	# 設定した秒数を待機後ブラウザを終了
@@ -61,10 +61,10 @@ if press_button:
 	# スクリーンショットを取得
 	driver.save_screenshot('screenshot.png')
 
-    # 全画面スクリーンショット取得　取得イメージ②
-    save_screenshot(driver, "full_size.png", is_full_size=True)
+	# 全画面スクリーンショット取得　取得イメージ②
+	save_screenshot(driver, "full_size.png", is_full_size=True)
 	
-    # 保存した画像をstreamlitアプリ上に表示
+	# 保存した画像をstreamlitアプリ上に表示
 	st.image('full_size.png')
 
 	driver.quit()
